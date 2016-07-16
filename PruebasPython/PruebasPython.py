@@ -1,9 +1,11 @@
+from itertools import count
+from math import pow
 # Double char
 def double_char(s):
     r = ""
     for char in s:
         r = r + char*2
-    return r;
+    return r
 
 # Test
 print(double_char("Hola mundo"))
@@ -58,8 +60,17 @@ def tribonacci(signature,n):
             resultado.append(resultado[i-1] + resultado[i-2] + resultado[i-3]) 
     return resultado
  
-# Test
+# Test  
 print(tribonacci([1,1,1],10))
+
+#Secuencia que hace tri, bi, cuatri...segun el numero de elementos que tenga signature
+def Xbonacci(signature,n):
+    resultado = signature[:n]
+    for i in range(n - len(signature)):
+        resultado.append(sum(resultado[-len(signature):])) 
+    return resultado
+
+
 
 
 class Dog(object):
@@ -82,3 +93,53 @@ def spin_words(sentence):
 # return [ x[::-1] for x in [x for x in sentence.split()] if len(x)>=5]
 #print(" ".join([x for x in "A ver que puedes hacer".split()]))
 print(spin_words("Hola mundo"))
+
+def valid_parentheses(string):
+    string = remove_text(string)
+    test_valid(string)
+    return string
+
+def test_valid(string):
+    fine = False
+    if string[0] == "(":
+        fine = test_valid(string[1:])
+    
+        
+def remove_text(string):
+    string = filter(lambda x : x == ")" or x == "(", string)
+    return "".join(list(string))
+
+print(valid_parentheses("hola () )() )()( world )()"))
+
+def reverse_words(str0):
+    aux = str0
+    rest = ""
+    word = [False, -1, -1]
+    for x in range(len(str0)):
+        if str0[x] != " " and not word[0]:
+            #print(aux[x] + " " + str(x))
+            word[0] = True
+            word[1] = x
+        elif str0[x] == " ":
+            if word[0]:
+                word[2] = x
+                rest = aux[0:word[1]-1] + aux[word[1]:word[2]][::-1] + aux[word[2]:]
+                word = [False, -1, -1]
+    return rest
+
+
+print(reverse_words("hola  mundo!! jaja saludos!:"))
+
+    #return " ".join(list(map(lambda x : x[::-1], str.split())))
+    
+reverse_words("Hola  mundo")
+
+def narcissistic( value ):
+    result = 0
+    str_value = str(value)
+    power = len(str_value)
+    for x in str_value:
+       result += pow(int(x), power)
+    return result == value
+
+print(narcissistic(1547))
