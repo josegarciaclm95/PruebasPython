@@ -1,0 +1,12 @@
+**********
+WAV files analyzed with:
+OpenVokaturi version 2.1 for open-source projects, 2017-01-13
+Distributed under the GNU General Public License, version 3 or later
+**********
+
+Emotion analysis of WAV file myRecording03.wav:
+Neutrality 0.010845
+Happiness 0.848976
+Sadness 0.001902
+Anger 0.118831
+Fear 0.019445
